@@ -6,7 +6,6 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi[all]>=0.115.12",
-    "langchain-anthropic>=0.3.13",
     "langchain-openai>=0.3.17",
     "psycopg2-binary>=2.9.10",
     "python-dotenv>=1.1.0",
