@@ -4,7 +4,8 @@ import axios from 'axios';
 import ThemeInput from './ThemeInput';
 import LoadingStatus from './LoadingStatus';
 
-const API_BASE_URL = '/api';
+const API_BASE_URL = '/choreo-apis/test-app/backend-uh/v1/api';
+
 
 function StoryGenerator() {
   const navigate = useNavigate();
