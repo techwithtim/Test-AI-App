@@ -1,0 +1,6 @@
+mkdir backend
+uv init .
+uv add fastapi[all]
+uv add uvicorn
+uv add sqlalchemy
+uv add python-dotenv
