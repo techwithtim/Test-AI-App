@@ -19,8 +19,8 @@ class StoryGenerator:
     @classmethod
     def _get_llm(cls):
         """Get the LLM client"""
-        openai_api_key = os.getenv("CHOREO_OPENAI_OPENAI_API_KEY")
-        openai_service_url = os.getenv("CHOREO_OPENAI_SERVICEURL")
+        openai_api_key = os.getenv("CHOREO_OPENAI_2_OPENAI_API_KEY")
+        openai_service_url = os.getenv("CHOREO_OPENAI_2_SERVICEURL")
         print(openai_api_key, openai_service_url)
         if  openai_api_key and openai_service_url:
             return ChatOpenAI(model="gpt-4-turbo", api_key=openai_api_key, openai_proxy=openai_service_url)
