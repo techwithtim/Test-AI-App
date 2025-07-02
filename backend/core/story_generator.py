@@ -8,6 +8,7 @@ from langchain_core.output_parsers import PydanticOutputParser
 from core.prompts import STORY_PROMPT
 from models.story import Story, StoryNode
 from core.models import StoryLLMResponse, StoryNodeLLM
+import os
 
 load_dotenv()
 
@@ -18,7 +19,12 @@ class StoryGenerator:
     @classmethod
     def _get_llm(cls):
         """Get the LLM client"""
-        return ChatOpenAI(model="gpt-4-turbo")
+        openai_api_key = os.getenv("CHOREO_OPENAI_OPENAI_API_KEY")
+        openai_service_url = os.getenv("CHOREO_OPENAI_SERVICEURL")
+        if  openai_api_key and openai_service_url:
+            return ChatOpenAI(model="gpt-4-turbo", api_key=openai_api_key, base_url=openai_service_url)
+        else:
+            return ChatOpenAI(model="gpt-4-turbo")
     
     @classmethod
     def generate_story(cls, db: Session, session_id: str, theme: str = "fantasy") -> Story:
