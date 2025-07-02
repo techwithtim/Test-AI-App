@@ -18,12 +18,15 @@ class StoryGenerator:
     
     @classmethod
     def _get_llm(cls):
-        """Get the LLM client"""
+        """Get the LLM client using Choreo-provided environment variables"""
         openai_api_key = os.getenv("CHOREO_OPENAI_2_OPENAI_API_KEY")
         openai_service_url = os.getenv("CHOREO_OPENAI_2_SERVICEURL")
-        print(openai_api_key, openai_service_url)
-        if  openai_api_key and openai_service_url:
-            return ChatOpenAI(model="gpt-4-turbo", api_key=openai_api_key, openai_proxy=openai_service_url)
+        print("Environment variables:",openai_api_key, openai_service_url)
+        if openai_api_key and openai_service_url:
+            # Use base_url for OpenAI endpoint override
+            return ChatOpenAI(model="gpt-4-turbo", api_key=openai_api_key, base_url=openai_service_url)
+        elif openai_api_key:
+            return ChatOpenAI(model="gpt-4-turbo", api_key=openai_api_key)
         else:
             return ChatOpenAI(model="gpt-4-turbo")
     
