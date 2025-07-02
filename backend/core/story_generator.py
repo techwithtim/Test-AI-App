@@ -21,8 +21,9 @@ class StoryGenerator:
         """Get the LLM client"""
         openai_api_key = os.getenv("CHOREO_OPENAI_OPENAI_API_KEY")
         openai_service_url = os.getenv("CHOREO_OPENAI_SERVICEURL")
+        print(openai_api_key, openai_service_url)
         if  openai_api_key and openai_service_url:
-            return ChatOpenAI(model="gpt-4-turbo", api_key=openai_api_key, base_url=openai_service_url)
+            return ChatOpenAI(model="gpt-4-turbo", api_key=openai_api_key, openai_proxy=openai_service_url)
         else:
             return ChatOpenAI(model="gpt-4-turbo")
     
